@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>Terra</h1>
+<h3>Land Use Classification using Transfer Learning Techniques</h3>
+<label class="form-label" for="customFile">Insert image here</label>
+<form method="post" enctype=multipart/form-data>
+    <input type="file" class="form-control" id="customFile" name="file" onchange="readURL(this)" accept="image/*"/>
+    <img id="blah" src="#" alt="your image" />
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% if categories %}
+<h4 style="margin-top: 2%;">Prediction results</h4>
+<p>{{pred}}</p>
+<table>
+    <tr>
+      <td>
+        Key
+      </td>
+      <td>
+        Value
+      </td>
+    </tr>
+    {% for category in categories %}
+    <tr>
+        <td>
+        <p>{{ category }}</p>
+        </td>
+        <td>
+        <p>{{ categories[category] }}</p>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+{% endblock %}
